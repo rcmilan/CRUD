@@ -4,8 +4,8 @@ import { usePersonStore } from "../../store/person";
 const TableComponent = () => {
   const persons = usePersonStore((state) => state.persons);
   const buildTable = () => {
-    return persons.map((p) => (
-      <tr>
+    return persons.map((p, i) => (
+      <tr key={i}>
         <td>{p.firstName}</td>
         <td>{p.cityName}</td>
         <td>{p.age}</td>
@@ -13,7 +13,9 @@ const TableComponent = () => {
     ));
   };
 
-  return <table>{buildTable()}</table>;
+  return <table>
+    <tbody>{buildTable()}</tbody>
+  </table>;
 };
 
 export default TableComponent;
